@@ -52,7 +52,7 @@ export default function Home() {
       <main className={styles.main}>
         <div className={styles.navbar}>
           <div>
-            <Image src="/logo.png" alt="Logo" width="160px" height="80px" />
+            <Image src="/logo.png" alt="Logo" width="160px" height="75px" />
             <div className={styles.navs}></div>
           </div>
         </div>
