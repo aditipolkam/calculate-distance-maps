@@ -2,7 +2,6 @@ import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
 import styles from "../styles/Home.module.css";
-import { server } from "../config";
 
 const START_MAP = `https://www.google.com/maps/embed/v1/place?key=${process.env.apiKey}&q=Pune,India`;
 
@@ -20,7 +19,7 @@ export default function Home() {
     console.log("sending request to api");
     setMap(MAP_URL);
 
-    const res = await fetch(`${server}/api/hello`, {
+    const res = await fetch(`/api/hello`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -87,22 +86,20 @@ export default function Home() {
                 />
               </div>
 
-              {distance > 0 && (
-                <div className={styles.distancebox}>
-                  <div className={styles.distanceHead}>
-                    <div>Distance</div>
-                    <div>
-                      <span>{distance}</span>
-                    </div>
-                  </div>
-                  <div className={styles.distanceTail}>
-                    <p>
-                      The distance between <b>{origin}</b> and{" "}
-                      <b>{destination}</b> is {distance}s.
-                    </p>
+              <div className={styles.distancebox}>
+                <div className={styles.distanceHead}>
+                  <div>Distance</div>
+                  <div>
+                    <span>{distance}</span>
                   </div>
                 </div>
-              )}
+                <div className={styles.distanceTail}>
+                  <p>
+                    The distance between <b>{origin}</b> and{" "}
+                    <b>{destination}</b> is {distance}s.
+                  </p>
+                </div>
+              </div>
             </div>
             <div className={styles.contentRight}>
               <iframe
