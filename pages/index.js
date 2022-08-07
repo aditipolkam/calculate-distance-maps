@@ -4,16 +4,21 @@ import { useState } from "react";
 import styles from "../styles/Home.module.css";
 import { server } from "../config";
 
+const START_MAP = `https://www.google.com/maps/embed/v1/place?key=${process.env.apiKey}&q=Pune,India`;
+
 export default function Home() {
-  const [origin, setOrigin] = useState("Pune");
-  const [destination, setDestination] = useState("Mumbai");
+  const [origin, setOrigin] = useState("");
+  const [destination, setDestination] = useState("");
   const [distance, setDistance] = useState(0);
 
   const MAP_URL = `https://www.google.com/maps/embed/v1/directions?key=${process.env.apiKey}&origin=${origin}
-  &destination=${destination}&avoid=tolls|highways`;
+    &destination=${destination}&avoid=tolls|highways`;
+
+  const [map, setMap] = useState(START_MAP);
 
   const calculateDistance = async () => {
     console.log("sending request to api");
+    setMap(MAP_URL);
 
     const res = await fetch(`${server}/api/hello`, {
       method: "POST",
@@ -82,20 +87,22 @@ export default function Home() {
                 />
               </div>
 
-              <div className={styles.distancebox}>
-                <div className={styles.distanceHead}>
-                  <div>Distance</div>
-                  <div>
-                    <span>{distance}s</span>
+              {distance > 0 && (
+                <div className={styles.distancebox}>
+                  <div className={styles.distanceHead}>
+                    <div>Distance</div>
+                    <div>
+                      <span>{distance}</span>
+                    </div>
+                  </div>
+                  <div className={styles.distanceTail}>
+                    <p>
+                      The distance between <b>{origin}</b> and{" "}
+                      <b>{destination}</b> is {distance}s.
+                    </p>
                   </div>
                 </div>
-                <div className={styles.distanceTail}>
-                  <p>
-                    The distance between <b>{origin}</b> and{" "}
-                    <b>{destination}</b> is {distance}s.
-                  </p>
-                </div>
-              </div>
+              )}
             </div>
             <div className={styles.contentRight}>
               <iframe
@@ -103,7 +110,7 @@ export default function Home() {
                 height="500px"
                 frameBorder="0"
                 referrerPolicy="no-referrer-when-downgrade"
-                src={MAP_URL}
+                src={map}
               ></iframe>
             </div>
           </div>
