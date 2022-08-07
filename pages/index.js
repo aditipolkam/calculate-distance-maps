@@ -3,14 +3,16 @@ import Image from "next/image";
 import { useState } from "react";
 import styles from "../styles/Home.module.css";
 
-const START_MAP = `https://www.google.com/maps/embed/v1/place?key=${process.env.apiKey}&q=Pune,India`;
-
 export default function Home() {
   const [origin, setOrigin] = useState("");
   const [destination, setDestination] = useState("");
   const [distance, setDistance] = useState(0);
 
-  const MAP_URL = `https://www.google.com/maps/embed/v1/directions?key=${process.env.apiKey}&origin=${origin}
+  const apiKey = process.env.apiKey;
+
+  const START_MAP = `https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=Pune,India`;
+
+  const MAP_URL = `https://www.google.com/maps/embed/v1/directions?key=${apiKey}&origin=${origin}
     &destination=${destination}&avoid=tolls|highways`;
 
   const [map, setMap] = useState(START_MAP);
