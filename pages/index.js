@@ -4,8 +4,8 @@ import { useState } from "react";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
-  const [origin, setOrigin] = useState("");
-  const [destination, setDestination] = useState("");
+  const [origin, setOrigin] = useState("Pune");
+  const [destination, setDestination] = useState("Pune");
   const [distance, setDistance] = useState(0);
 
   const apiKey = process.env.apiKey;
@@ -15,11 +15,12 @@ export default function Home() {
   const MAP_URL = `https://www.google.com/maps/embed/v1/directions?key=${apiKey}&origin=${origin}
     &destination=${destination}&avoid=tolls|highways`;
 
-  const [map, setMap] = useState(START_MAP);
+  const [map, setMap] = useState(MAP_URL);
 
   const calculateDistance = async () => {
     console.log("sending request to api");
     setMap(MAP_URL);
+    console.log(map);
 
     const res = await fetch(`/api/hello`, {
       method: "POST",
