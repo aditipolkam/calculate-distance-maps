@@ -107,7 +107,7 @@ export default function Home() {
                 height="500px"
                 frameBorder="0"
                 referrerPolicy="no-referrer-when-downgrade"
-                src={map}
+                src={MAP_URL}
               ></iframe>
             </div>
           </div>
