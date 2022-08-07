@@ -33,7 +33,7 @@ export default function Home() {
     const data = await res.json();
     if (data) {
       console.log(data);
-      setDistance(data.distance);
+      await setDistance(data.distance);
     }
   };
 
