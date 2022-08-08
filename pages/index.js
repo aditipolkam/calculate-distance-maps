@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
 import styles from "../styles/Home.module.css";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 
 export default function Home() {
   const [origin, setOrigin] = useState("");
@@ -67,13 +68,15 @@ export default function Home() {
           <div className={styles.content}>
             <div className={styles.contentLeft}>
               <div className={styles.inputContainer}>
-                {/* <FontAwesomeIcon icon="fa-solid fa-location-dot" /> */}
                 <label>Origin</label>
-                <input
-                  type="text"
-                  id="origin"
-                  onChange={(e) => setOrigin(e.target.value)}
-                />
+                <div className={styles.inputComp}>
+                  <LocationOnIcon className="icon" style={{ color: "red" }} />
+                  <input
+                    type="text"
+                    id="origin"
+                    onChange={(e) => setOrigin(e.target.value)}
+                  />
+                </div>
               </div>
               <div className={styles.buttonContainer}>
                 <button className={styles.btn} onClick={calculateDistance}>
@@ -82,13 +85,15 @@ export default function Home() {
               </div>
               <div className={styles.inputContainer}>
                 <label>Destination</label>
-                <input
-                  type="text"
-                  id="destination"
-                  onChange={(e) => setDestination(e.target.value)}
-                />
+                <div className={styles.inputComp}>
+                  <LocationOnIcon className="icon" style={{ color: "red" }} />
+                  <input
+                    type="text"
+                    id="destination"
+                    onChange={(e) => setDestination(e.target.value)}
+                  />
+                </div>
               </div>
-
               <div className={styles.distancebox}>
                 <div className={styles.distanceHead}>
                   <div>Distance</div>
