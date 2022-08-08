@@ -95,7 +95,7 @@
   border: none;
   color: white;
   padding: 2vh 3vw;
-  border-radius: 20px;
+  border-radius: 25px;
 }
 
 .details span {
@@ -145,5 +145,9 @@
   .content {
     width: 100%;
     flex-direction: column;
+  }
+  .contentLeft,
+  .contentRight {
+    width: 80%;
   }
 }

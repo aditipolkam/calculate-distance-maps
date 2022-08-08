@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 import styles from "../styles/Home.module.css";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import AutoComplete from "react-google-autocomplete";
 
 export default function Home() {
   const [origin, setOrigin] = useState("");
@@ -71,11 +72,19 @@ export default function Home() {
                 <label>Origin</label>
                 <div className={styles.inputComp}>
                   <LocationOnIcon className="icon" style={{ color: "red" }} />
-                  <input
+                  <AutoComplete
+                    apiKey={apiKey}
+                    onPlaceSelected={(place) => {
+                      setDistance(0);
+                      setOrigin(place["formatted_address"]);
+                    }}
+                  />
+                  {/* <input
                     type="text"
                     id="origin"
-                    onChange={(e) => setOrigin(e.target.value)}
-                  />
+                    ref={ref}
+                    // onChange={(e) => setOrigin(e.target.value)}
+                  /> */}
                 </div>
               </div>
               <div className={styles.buttonContainer}>
@@ -87,10 +96,12 @@ export default function Home() {
                 <label>Destination</label>
                 <div className={styles.inputComp}>
                   <LocationOnIcon className="icon" style={{ color: "red" }} />
-                  <input
-                    type="text"
-                    id="destination"
-                    onChange={(e) => setDestination(e.target.value)}
+                  <AutoComplete
+                    apiKey={apiKey}
+                    onPlaceSelected={(place) => {
+                      setDistance(0);
+                      setDestination(place["formatted_address"]);
+                    }}
                   />
                 </div>
               </div>
