@@ -7,7 +7,7 @@ export default async function handler(req, res) {
   let destination = req.body.destination;
   console.log(origin, destination);
 
-  const URL = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${origin}&destinations=${destination}&units=metrics&key=${process.env.apiKey}`;
+  const URL = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${origin}&destinations=${destination}&units=metrics&key=${process.env.NEXT_PUBLIC_API_KEY}`;
 
   axios
     .get(URL)

@@ -8,14 +8,14 @@ export default function Home() {
   const [destination, setDestination] = useState("Pune");
   const [distance, setDistance] = useState(0);
 
-  const apiKey = process.env.apiKey;
+  const apiKey = process.env.NEXT_PUBLIC_API_KEY;
 
   const START_MAP = `https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=Pune,India`;
 
   const MAP_URL = `https://www.google.com/maps/embed/v1/directions?key=${apiKey}&origin=${origin}
     &destination=${destination}&avoid=tolls|highways`;
 
-  const [map, setMap] = useState(MAP_URL);
+  const [map, setMap] = useState(START_MAP);
 
   const calculateDistance = async () => {
     console.log("sending request to api");
