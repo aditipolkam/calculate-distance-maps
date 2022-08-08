@@ -68,10 +68,10 @@ export default function Home() {
             <div className={styles.contentLeft}>
               <div className={styles.inputContainer}>
                 {/* <FontAwesomeIcon icon="fa-solid fa-location-dot" /> */}
+                <label>Origin</label>
                 <input
                   type="text"
                   id="origin"
-                  placeholder="start point"
                   onChange={(e) => setOrigin(e.target.value)}
                 />
               </div>
@@ -81,10 +81,10 @@ export default function Home() {
                 </button>
               </div>
               <div className={styles.inputContainer}>
+                <label>Destination</label>
                 <input
                   type="text"
                   id="destination"
-                  placeholder="end point"
                   onChange={(e) => setDestination(e.target.value)}
                 />
               </div>
