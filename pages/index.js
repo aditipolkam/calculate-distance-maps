@@ -4,8 +4,8 @@ import { useState } from "react";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
-  const [origin, setOrigin] = useState("Pune");
-  const [destination, setDestination] = useState("Pune");
+  const [origin, setOrigin] = useState("");
+  const [destination, setDestination] = useState("");
   const [distance, setDistance] = useState(0);
 
   const apiKey = process.env.NEXT_PUBLIC_API_KEY;
@@ -97,10 +97,13 @@ export default function Home() {
                   </div>
                 </div>
                 <div className={styles.distanceTail}>
-                  <p>
-                    The distance between <b>{origin}</b> and{" "}
-                    <b>{destination}</b> is {distance}s.
-                  </p>
+                  {!origin && <p>Enter origin and destination</p>}
+                  {origin && (
+                    <p>
+                      The distance between <b>{origin}</b> and{" "}
+                      <b>{destination}</b> is {distance}s.
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
